@@ -25,14 +25,22 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   template: `
   <main>
       <header class="brand-name">
-        <a [routerLink]="['/']">
-          <img id="uncles-chair" src="/assets/IMG_0669.PNG" height=30px width=30px alt="logo" aria-hidden="true">
-        </a>
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
+        <mat-toolbar>
+          <a [routerLink]="['/']">
+            <img id="uncles-chair" src="/assets/IMG_0669.PNG" height=50px width=50px alt="logo" aria-hidden="true">
+          </a>
+          <button mat-button [matMenuTriggerFor]="menu">In Game Sound Effects</button>
+          <mat-menu #menu="matMenu">
+            <a [routerLink]="['/game-sound-effects']"><button mat-menu-item>Item 1</button></a>
+            <a [routerLink]="['/game-sound-effects']"><button mat-menu-item>Item 2</button></a>
+          </mat-menu>
+          <button mat-button [matMenuTriggerFor]="menu">In Game Sound Tracks</button>
+          <mat-menu #menu="matMenu">
+            <a [routerLink]="['/in-game-sound-tracks']"><button mat-menu-item>Item 1</button></a>
+            <a [routerLink]="['/in-game-sound-tracks']"><button mat-menu-item>Item 2</button></a>
+          </mat-menu>
+          <a [routerLink]="['/contact-us']"><button mat-button>Contact Us</button></a>
+        </mat-toolbar>
       </header>
     <section class="content">
       <router-outlet></router-outlet>

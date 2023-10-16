@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <img [src]="this.artCover" [width]="150" [height]="150" />
-    <h2>Song Name: {{this.songName}}</h2>
+    <img [src]="this.artCover" [width]="150" [height]="150" class='artist-image' />
+    <h2 class='song-name'>Song Name: {{this.songName}}</h2>
   `,
   styleUrls: ['./artist-details.component.sass']
 })
