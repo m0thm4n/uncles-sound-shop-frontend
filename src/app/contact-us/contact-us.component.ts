@@ -1,25 +1,26 @@
                                                         import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UnclesSoundShopModule } from '../app.module';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import {FloatLabelType, MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-contact-us',
   standalone: true,
   imports: [CommonModule, UnclesSoundShopModule, ReactiveFormsModule, FormsModule, MatFormFieldModule],
-  providers: [UnclesSoundShopModule],
+  providers: [UnclesSoundShopModule, FormControl],
   template: `
     <div id='contact-form'>
-      <form [formGroup]="options">
-        <mat-form-field id="email" class="form-field" [ngClass]="email" appearance="outline">
+      <form [formGroup]="options" (ngSubmit)="submitRequest()">
+        <mat-form-field id="email" class="form-field" appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Please enter your email address">
+          <input matInput type="text" [formControl]='email' placeholder="Please enter your email address">
         </mat-form-field>
-        <mat-form-field class="form-field" [ngClass]="email" appearance="outline">
-          <textarea matInput rows="15" placeholder="Please Describe Your Inquiry In Detail"></textarea> 
+        <mat-form-field class="form-field" appearance="outline">
+          <textarea matInput rows="15" [formControl]='inquiry' placeholder="Please Describe Your Inquiry In Detail"></textarea>
         </mat-form-field>
-        <button mat-raised-button class="button form-field" type="submit">Send Email</button>
+
+        <button mat-raised-button class="button form-field" type="submit" [disabled]="(this.inquiry.value === '' || this.email.value === '')">Send Email</button>
       </form>
     </div>
   `,
@@ -27,7 +28,7 @@ import {FloatLabelType, MatFormFieldModule} from '@angular/material/form-field';
 })
 export class ContactUsComponent {
   public email = new FormControl('');
-  public inquiry = new FormControl('')
+  public inquiry = new FormControl('');
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto' as FloatLabelType);
   options = this.formBuilder.group({
@@ -35,7 +36,14 @@ export class ContactUsComponent {
     floatLabel: this.floatLabelControl,
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder) {
 
+  }
+
+  ngOnInit() {
+  }
+
+  submitRequest() {
+    console.log(this.email);
   }
 }
