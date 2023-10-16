@@ -42,7 +42,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
-
+import { MatButton } from '@angular/material/button';
 
 @NgModule({
   exports: [
@@ -91,6 +91,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     PortalModule,
     ScrollingModule,
   ],
+  providers: [MatButton]
 })
 
 export class UnclesSoundShopModule {}

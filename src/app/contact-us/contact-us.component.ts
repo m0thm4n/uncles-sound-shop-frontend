@@ -8,15 +8,18 @@ import {FloatLabelType, MatFormFieldModule} from '@angular/material/form-field';
   selector: 'app-contact-us',
   standalone: true,
   imports: [CommonModule, UnclesSoundShopModule, ReactiveFormsModule, FormsModule, MatFormFieldModule],
+  providers: [UnclesSoundShopModule],
   template: `
     <div id='contact-form'>
       <form [formGroup]="options">
-        <mat-form-field class="form-field" [ngClass]="email" appearance="outline">
+        <mat-form-field id="email" class="form-field" [ngClass]="email" appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Please enter your email address">
         </mat-form-field>
-        <textarea cols="600" rows="15" placeholder="Please Describe Your Inquiry In Detail"></textarea> 
-        <button class="button form-field" type="submit">Send Email</button>
+        <mat-form-field class="form-field" [ngClass]="email" appearance="outline">
+          <textarea matInput rows="15" placeholder="Please Describe Your Inquiry In Detail"></textarea> 
+        </mat-form-field>
+        <button mat-raised-button class="button form-field" type="submit">Send Email</button>
       </form>
     </div>
   `,
