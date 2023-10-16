@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PlayerComponent } from '../player/player.component';
 
 @Component({
   selector: 'app-in-game-sound-tracks',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PlayerComponent],
   template: `
-    <p>
-      in-game-sound-tracks works!
-    </p>
+    <app-player></app-player>
   `,
   styleUrls: ['./in-game-sound-tracks.component.sass']
 })
