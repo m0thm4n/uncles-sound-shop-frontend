@@ -19,6 +19,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     RouterLink,
     RouterOutlet,
     UnclesSoundShopModule,
+    HttpClientModule,
   ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }, HttpClientModule,],
   styleUrls: ['./app.component.sass'],
