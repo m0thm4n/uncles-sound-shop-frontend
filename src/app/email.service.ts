@@ -11,7 +11,7 @@ interface QueryRequest {
 export class EmailService {
   http: HttpClient = inject(HttpClient)
 
-  private emailUrl = "http://localhost:8080/send-email";
+  private emailUrl = "https://ps2ualdt5h.execute-api.us-east-1.amazonaws.com/dev/send-email";
 
   constructor() {
   }
@@ -21,8 +21,8 @@ export class EmailService {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'POST,DELETE',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': 'OPTIONS,POST,DELETE',
     };
 
     return this.http.post<QueryRequest>(this.emailUrl, { "email": email, "subject": subject, "details": details }, { headers: queryApiHeaders });
